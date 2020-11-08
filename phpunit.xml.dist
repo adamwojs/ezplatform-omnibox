@@ -1,0 +1,17 @@
+<phpunit
+        backupGlobals="false"
+        backupStaticAttributes="false"
+        bootstrap="vendor/autoload.php"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        colors="true">
+    <testsuites>
+        <testsuite name="AdamWojs\EzPlatformOmniboxBundle">
+            <directory>tests/bundle</directory>
+        </testsuite>
+        <testsuite name="AdamWojs\EzPlatformOmnibox">
+            <directory>tests/lib</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

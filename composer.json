@@ -1,0 +1,39 @@
+{
+  "name": "adamwojs/ezplatform-omnibox",
+  "license": "GPL-2.0-only",
+  "keywords": [
+    "ezplatform"
+  ],
+  "type": "ezplatform-bundle",
+  "require": {
+    "php": "^7.3",
+    "ezsystems/ezplatform-kernel": "^1.0",
+    "ezsystems/ezplatform-admin-ui": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.2",
+    "ezsystems/ezplatform-code-style": "^0.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "AdamWojs\\EzPlatformOmniboxBundle\\": "src/bundle/",
+      "AdamWojs\\EzPlatformOmnibox\\": "src/lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AdamWojs\\EzPlatformOmniboxBundle\\Tests\\": "tests/bundle/",
+      "AdamWojs\\EzPlatformOmnibox\\Tests\\": "tests/lib/"
+    }
+  },
+  "scripts": {
+    "fix-cs": "php-cs-fixer fix -v --show-progress=estimating",
+    "check-cs": "php-cs-fixer fix --dry-run -v --show-progress=estimating",
+    "unit-tests": "phpunit -c phpunit.xml.dist"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
