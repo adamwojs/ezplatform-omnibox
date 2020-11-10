@@ -1,6 +1,26 @@
+imports:
+    - { resource: services/suggestion_providers.yaml }
+
 services:
     _defaults:
         autowire: true
         autoconfigure: true
         public: false
 
+    ezplatform.omnibox.components.autocomplete_js:
+        parent: EzSystems\EzPlatformAdminUi\Component\ScriptComponent
+        arguments:
+            $src: 'https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js'
+        tags:
+            - { name: ezplatform.admin_ui.component, group: script-body }
+
+    ezplatform.omnibox.components.autocomplete_css:
+        parent: EzSystems\EzPlatformAdminUi\Component\TwigComponent
+        arguments:
+            $template: '@@ezdesign/ui/omnibox/_stylesheets.html.twig'
+        tags:
+            - { name: ezplatform.admin_ui.component, group: stylesheet-body }
+
+    AdamWojs\EzPlatformOmniboxBundle\Controller\OmniboxController:
+        tags:
+            - { name: controller.service_arguments }

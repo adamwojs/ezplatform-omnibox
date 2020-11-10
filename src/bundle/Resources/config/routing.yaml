@@ -1,0 +1,6 @@
+ezplatform.omnibox.search:
+    path: /omnibox/search
+    defaults:
+        _controller: 'AdamWojs\EzPlatformOmniboxBundle\Controller\OmniboxController::searchAction'
+    options:
+        expose: true

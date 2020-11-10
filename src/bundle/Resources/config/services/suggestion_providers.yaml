@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionProviderInterface:
+        alias: 'AdamWojs\EzPlatformOmniboxBundle\Service\ChainSuggestionProvider'
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\ChainSuggestionProvider:
+        arguments:
+            $providers: !tagged_iterator ezplatform.omnibox.suggestion_provider
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\ContentProvider:
+        tags:
+            - { name: ezplatform.omnibox.suggestion_provider }
+
