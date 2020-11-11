@@ -1,5 +1,7 @@
 # ezplatform-omnibox
 
+Omnibox search for Ibexa DXP (eZ Platform) backend.
+
 ## Installation
 
 ### Applications that use Symfony Flex
@@ -36,4 +38,27 @@ return [
     // ...
     AdamWojs\EzPlatformOmnibox\EzPlatformOmniboxBundle::class => ['all' => true],
 ];
+```
+
+### Step 3: Import routes
+
+Creating `ezplatform_omnibox.yaml` in `/config/routes/` directory and import `@EzPlatformOmniboxBundle/Resources/config/routing.yaml` 
+
+```yaml
+ezplatform_omnibox:
+    resource: '@EzPlatformOmniboxBundle/Resources/config/routing.yaml'
+    defaults:
+        siteaccess_group_whitelist: '%admin_group_name%'
+```
+
+### Step 4: Switch `admin` to `omnibox` design
+
+`ezplatform-omnibox` overwrites `top_navigation.html.twig` template, 
+so you have to switch design from `admin` to `omnibox`. 
+
+```yaml
+ezplatform:
+    system:
+        admin:
+            design: omnibox
 ```
