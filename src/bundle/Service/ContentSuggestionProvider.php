@@ -11,7 +11,7 @@ use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
 use eZ\Publish\API\Repository\Values\Content\Query\SortClause;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-final class ContentProvider implements SuggestionProviderInterface
+final class ContentSuggestionProvider implements SuggestionProviderInterface
 {
     /** @var SearchService */
     private $searchService;
