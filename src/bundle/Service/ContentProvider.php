@@ -6,7 +6,6 @@ namespace AdamWojs\EzPlatformOmniboxBundle\Service;
 
 use eZ\Publish\API\Repository\SearchService;
 use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\ContentInfo;
 use eZ\Publish\API\Repository\Values\Content\Query;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
 use eZ\Publish\API\Repository\Values\Content\Query\SortClause;
@@ -37,13 +36,13 @@ final class ContentProvider implements SuggestionProviderInterface
             /** @var Content $content */
             $content = $searchResult->valueObject;
 
-            $text = $content->getName();
-            if (!$suggestionQuery->isPrefixOf($text)) {
+            $name = $content->getName();
+            if (!$suggestionQuery->isPrefixOf($name)) {
                 continue;
             }
 
-            yield new Suggestion(
-                $text,
+            yield new ContentSuggestion(
+                $content,
                 $this->urlGenerator->generate('_ez_content_view', [
                     'contentId' => $content->id,
                 ])

@@ -22,12 +22,24 @@
     border-top: none;
 }
 
+.algolia-autocomplete.aa-aa-with-content {
+
+}
+
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
     padding: 1rem;
     cursor: pointer;
     border-top: 0.0625rem solid #e0e0e8;
     vertical-align: middle;
     line-height: 100%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion h6 {
+    font-weight: normal;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .aa-suggestion-meta {
+    color: #878b90;
 }
 
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion p {

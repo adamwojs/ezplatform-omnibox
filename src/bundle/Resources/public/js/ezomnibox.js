@@ -27,19 +27,25 @@
     const input = form.querySelector('input');
 
     document.addEventListener('DOMContentLoaded', () => {
-        autocomplete(input, {hint: false}, [
+        autocomplete(input, {hint: true}, [
             {
+                name: 'content',
+                displayKey: 'name',
                 source: (query, callback) => {
                     fetchSuggestions(query).then(callback);
                 },
-                displayText: 'text',
                 templates: {
                     suggestion: (suggestion, answer) => {
-                        return autocomplete.escapeHighlightedString(
-                            suggestion.text,
-                            '<span class="highlighted">',
-                            '</span>'
-                        );
+                        return `
+                            <h6 class="mt-0">${suggestion.name}</h6>
+                            
+                            <p class="aa-suggestion-meta">
+                                <svg class="ez-icon ez-icon--small ez-icon--base-dark ez-icon-${suggestion.contentType.identifier}">
+                                    <use xlink:href="/bundles/ezplatformadminuiassets/vendors/webalys/streamlineicons/all-icons.svg#${suggestion.contentType.identifier}"></use>
+                                </svg>                                                                                                
+                                ${suggestion.contentType.name} under ${suggestion.parentName}
+                            </p> 
+                        `;
                     }
                 }
             },
