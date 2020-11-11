@@ -14,13 +14,6 @@ services:
         tags:
             - { name: ezplatform.admin_ui.component, group: script-body }
 
-    ezplatform.omnibox.components.autocomplete_css:
-        parent: EzSystems\EzPlatformAdminUi\Component\TwigComponent
-        arguments:
-            $template: '@@ezdesign/ui/omnibox/_stylesheets.html.twig'
-        tags:
-            - { name: ezplatform.admin_ui.component, group: stylesheet-body }
-
     AdamWojs\EzPlatformOmniboxBundle\Controller\OmniboxController:
         tags:
             - { name: controller.service_arguments }
