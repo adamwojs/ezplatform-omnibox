@@ -25,9 +25,10 @@ final class ContentProvider implements SuggestionProviderInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function getSuggestions(QueryString $suggestionQuery): iterable
+    public function getSuggestions(QueryString $suggestionQuery, int $limit = self::DEFAULT_SUGGESTIONS_LIMIT): iterable
     {
         $query = new Query();
+        $query->limit = $limit;
         $query->filter = new Criterion\FullText($suggestionQuery->toString() . '*');
         $query->sortClauses[] = new SortClause\ContentName();
 

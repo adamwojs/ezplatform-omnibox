@@ -23,14 +23,19 @@ final class OmniboxController extends AbstractController
     public function searchAction(Request $request): JsonResponse
     {
         $query = new QueryString($request->query->get('query', ''));
+        $limit = $request->query->getInt('limit', SuggestionProviderInterface::DEFAULT_SUGGESTIONS_LIMIT);
 
-        if ($query->isEmpty()) {
+        if ($query->isEmpty() || $limit <= 0) {
             // No suggestions for empty query
             return new JsonResponse([]);
         }
 
-        $suggestions = $this->suggestionProvider->getSuggestions($query);
+        $suggestions = $this->suggestionProvider->getSuggestions($query, $limit);
 
-        return new JsonResponse(iterator_to_array($suggestions));
+        $response = new JsonResponse(iterator_to_array($suggestions));
+        $response->setPrivate();
+        $response->setTtl(0);
+
+        return $response;
     }
 }
