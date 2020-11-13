@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    _instanceof:
+        AdamWojs\EzPlatformOmniboxBundle\Service\Command\CommandInterface:
+            tags: ['ezplatform.omnibox.command']
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\Command\:
+        resource: '../../../Service/Command/*'
