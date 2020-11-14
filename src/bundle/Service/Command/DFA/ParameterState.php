@@ -4,20 +4,29 @@ declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA;
 
-final class PlaceholderNode extends Node
+final class ParameterState extends State
 {
     /** @var string */
     private $name;
 
-    public function __construct(string $name, ?Node $parent = null)
+    /** @var string */
+    private $type;
+
+    public function __construct(string $name, string $type, ?State $parent = null)
     {
         parent::__construct($parent);
 
         $this->name = $name;
+        $this->type = $type;
     }
 
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 }

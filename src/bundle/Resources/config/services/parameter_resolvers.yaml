@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ParameterResolverRegistry:
+        arguments:
+            $resolvers: !tagged_iterator { tag: 'ezplatform.omnibox.command.parameter_resolver', index_by: 'type' }
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\LanguageParameterResolver:
+        tags:
+            - { name: 'ezplatform.omnibox.command.parameter_resolver', type: 'language' }
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ContentTypeParameterResolver:
+        tags:
+            - { name: 'ezplatform.omnibox.command.parameter_resolver', type: 'content_type' }

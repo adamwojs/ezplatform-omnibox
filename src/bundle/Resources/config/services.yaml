@@ -1,6 +1,7 @@
 imports:
     - { resource: services/suggestion_providers.yaml }
     - { resource: services/commands.yaml }
+    - { resource: services/parameter_resolvers.yaml }
 
 services:
     _defaults:

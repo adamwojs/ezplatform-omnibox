@@ -10,3 +10,5 @@ services:
 
     AdamWojs\EzPlatformOmniboxBundle\Service\Command\:
         resource: '../../../Service/Command/*'
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAVisitorFactory: ~
