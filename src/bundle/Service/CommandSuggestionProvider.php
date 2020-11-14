@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service;
 
-use AdamWojs\EzPlatformOmniboxBundle\Service\Command\AST\Node;
-use AdamWojs\EzPlatformOmniboxBundle\Service\Command\AST\RootNode;
+use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\Node;
+use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\RootNode;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\CommandInterface;
 
 final class CommandSuggestionProvider implements SuggestionProviderInterface
@@ -14,12 +14,12 @@ final class CommandSuggestionProvider implements SuggestionProviderInterface
     private $commands;
 
     /** @var RootNode */
-    private $tree;
+    private $dfa;
 
     public function __construct(iterable $commands)
     {
         $this->commands = $commands;
-        $this->tree = $this->buildAST($commands);
+        $this->dfa = $this->buildDFA($commands);
     }
 
     public function getSuggestions(QueryString $query, int $limit = self::DEFAULT_SUGGESTIONS_LIMIT): iterable
@@ -30,11 +30,11 @@ final class CommandSuggestionProvider implements SuggestionProviderInterface
     /**
      * @param CommandInterface[] $commands
      */
-    private function buildAST(iterable $commands): Node
+    private function buildDFA(iterable $commands): Node
     {
         $root = new RootNode();
         foreach ($commands as $command) {
-            $command->buildAST($root);
+            $command->buildDFA($root);
         }
 
         return $root;
