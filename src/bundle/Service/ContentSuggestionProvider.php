@@ -25,11 +25,13 @@ final class ContentSuggestionProvider implements SuggestionProviderInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function getSuggestions(QueryString $suggestionQuery, int $limit = self::DEFAULT_SUGGESTIONS_LIMIT): iterable
+    public function getSuggestions(SuggestionQuery $suggestionQuery): iterable
     {
+        $queryString = $suggestionQuery->getQueryString();
+
         $query = new Query();
-        $query->limit = $limit;
-        $query->filter = new Criterion\FullText($suggestionQuery->toString() . '*');
+        $query->limit = $suggestionQuery->getLimit();
+        $query->filter = new Criterion\FullText($queryString->toString() . '*');
         $query->sortClauses[] = new SortClause\ContentName();
 
         $searchResults = $this->searchService->findContent($query);
@@ -37,8 +39,7 @@ final class ContentSuggestionProvider implements SuggestionProviderInterface
             /** @var Content $content */
             $content = $searchResult->valueObject;
 
-            $name = $content->getName();
-            if (!$suggestionQuery->isPrefixOf($name)) {
+            if (!$queryString->isPrefixOf($content->getName())) {
                 continue;
             }
 

@@ -9,15 +9,15 @@ services:
 
     AdamWojs\EzPlatformOmniboxBundle\Service\ChainSuggestionProvider:
         arguments:
-            $providers: !tagged_iterator ezplatform.omnibox.suggestion_provider
+            $providers: !tagged_iterator { tag: ezplatform.omnibox.suggestion_provider, index_by: type }
 
     AdamWojs\EzPlatformOmniboxBundle\Service\CommandSuggestionProvider:
         arguments:
             $commands: !tagged_iterator ezplatform.omnibox.command
         tags:
-            - { name: ezplatform.omnibox.suggestion_provider }
+            - { name: ezplatform.omnibox.suggestion_provider, type: command }
 
     AdamWojs\EzPlatformOmniboxBundle\Service\ContentSuggestionProvider:
         tags:
-            - { name: ezplatform.omnibox.suggestion_provider }
+            - { name: ezplatform.omnibox.suggestion_provider, type: content }
 

@@ -14,10 +14,14 @@ final class ChainSuggestionProvider implements SuggestionProviderInterface
         $this->providers = $providers;
     }
 
-    public function getSuggestions(QueryString $query, int $limit = self::DEFAULT_SUGGESTIONS_LIMIT): iterable
+    public function getSuggestions(SuggestionQuery $query): iterable
     {
-        foreach ($this->providers as $provider) {
-            foreach ($provider->getSuggestions($query, $limit) as $suggestion) {
+        foreach ($this->providers as $type => $provider) {
+            if ($query->getTypes() !== null && !in_array($type, $query->getTypes())) {
+                continue;
+            }
+
+            foreach ($provider->getSuggestions($query) as $suggestion) {
                 yield $suggestion;
             }
         }

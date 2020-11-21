@@ -31,20 +31,20 @@ final class CommandSuggestionProvider implements SuggestionProviderInterface
         }
     }
 
-    public function getSuggestions(QueryString $query, int $limit = self::DEFAULT_SUGGESTIONS_LIMIT): iterable
+    public function getSuggestions(SuggestionQuery $query): iterable
     {
         if ($this->dfa === null) {
             $this->dfa = $this->buildDFA($this->commands);
         }
 
         $lexer = new Lexer();
-        $lexer->tokenize($query->toString());
+        $lexer->tokenize($query->getQueryString()->toString());
 
         $visitor = $this->dfaVisitorFactory->createVisitor($lexer);
 
         $i = 0;
         foreach ($visitor->visitRootNode($this->dfa) as $path) {
-            if ($i === $limit) {
+            if ($i === $query->getLimit()) {
                 break;
             }
 

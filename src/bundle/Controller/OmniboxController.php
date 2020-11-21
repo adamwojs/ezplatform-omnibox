@@ -6,6 +6,8 @@ namespace AdamWojs\EzPlatformOmniboxBundle\Controller;
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\QueryString;
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionProviderInterface;
+use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionQuery;
+use EzSystems\EzPlatformRest\Server\Exceptions\BadRequestException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,15 +24,22 @@ final class OmniboxController extends AbstractController
 
     public function searchAction(Request $request): JsonResponse
     {
-        $query = new QueryString($request->query->get('query', ''));
-        $limit = $request->query->getInt('limit', SuggestionProviderInterface::DEFAULT_SUGGESTIONS_LIMIT);
+        $queryString = new QueryString($request->query->get('query', ''));
+        $limit = $request->query->getInt('limit', SuggestionQuery::DEFAULT_LIMIT);
+        $types = $request->query->get('types');
 
-        if ($query->isEmpty() || $limit <= 0) {
+        if ($types !== null && !is_array($types)) {
+            throw new BadRequestException();
+        }
+
+        if ($queryString->isEmpty() || $limit <= 0) {
             // No suggestions for empty query
             return new JsonResponse([]);
         }
 
-        $suggestions = $this->suggestionProvider->getSuggestions($query, $limit);
+        $suggestions = $this->suggestionProvider->getSuggestions(
+            new SuggestionQuery($queryString, $limit, $types)
+        );
 
         $response = new JsonResponse(iterator_to_array($suggestions));
         $response->setPrivate();
