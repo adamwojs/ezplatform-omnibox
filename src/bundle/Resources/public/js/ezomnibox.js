@@ -1,7 +1,12 @@
 ((window, document, Routing) => {
-    const getSuggestionsEndpoint = (query) => {
+    const getSuggestionsEndpoint = (query, limit, types) => {
+        limit = limit || 5;
+        types = types || [];
+
         return Routing.generate('ezplatform.omnibox.search', {
-            'query': query
+            'query': query,
+            'limit': limit,
+            'types': types
         });
     }
 
@@ -13,8 +18,8 @@
         return response.json();
     }
 
-    const fetchSuggestions = (query) => {
-        const request = new Request(getSuggestionsEndpoint(query), {
+    const fetchSuggestions = (query, limit, types) => {
+        const request = new Request(getSuggestionsEndpoint(query, limit, types), {
             method: 'POST',
             mode: 'same-origin',
             credentials: 'same-origin',
@@ -32,7 +37,7 @@
                 name: 'content',
                 displayKey: 'name',
                 source: (query, callback) => {
-                    fetchSuggestions(query).then(callback);
+                    fetchSuggestions(query, null, ['content']).then(callback);
                 },
                 templates: {
                     suggestion: (suggestion, answer) => {
@@ -49,6 +54,18 @@
                     }
                 }
             },
+            {
+                name: 'command',
+                displayKey: 'displayText',
+                source: (query, callback) => {
+                    fetchSuggestions(query, null, ['command']).then(callback);
+                },
+                templates: {
+                    suggestion: (suggestion, answer) => {
+                        return `${suggestion.displayText}`;
+                    }
+                }
+            }
         ]).on('autocomplete:selected', (e, suggestion, dataset) => {
             if (suggestion.actionUrl.length !== 0) {
                 window.location = suggestion.actionUrl;
