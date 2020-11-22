@@ -1,5 +1,6 @@
 imports:
     - { resource: services/suggestion_providers.yaml }
+    - { resource: services/suggestion_context_resolvers.yaml }
     - { resource: services/commands.yaml }
     - { resource: services/parameter_resolvers.yaml }
 
@@ -19,3 +20,9 @@ services:
     AdamWojs\EzPlatformOmniboxBundle\Controller\OmniboxController:
         tags:
             - { name: controller.service_arguments }
+
+    AdamWojs\EzPlatformOmniboxBundle\UI\Config\SuggestionContextProvider:
+        arguments:
+            $resolvers: !tagged_iterator ezplatform.omnibox.suggestion_context_resolver
+        tags:
+            - { name: ezplatform.admin_ui.config_provider, key: 'suggestionContext' }

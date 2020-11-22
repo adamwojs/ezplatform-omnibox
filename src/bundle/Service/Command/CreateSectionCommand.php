@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command;
 
-use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\State;
+use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\DFA;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAPath;
 use AdamWojs\EzPlatformOmniboxBundle\Service\CommandSuggestion;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Suggestion;
+use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class CreateSectionCommand implements CommandInterface
@@ -20,7 +21,7 @@ final class CreateSectionCommand implements CommandInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function buildSuggestion(DFAPath $path): Suggestion
+    public function buildSuggestion(DFAPath $path, SuggestionContext $context): Suggestion
     {
         return new CommandSuggestion(
             $path->join(),
@@ -28,7 +29,7 @@ final class CreateSectionCommand implements CommandInterface
         );
     }
 
-    public function buildDFA(State $dfa): void
+    public function buildDFA(DFA $dfa, SuggestionContext $context): void
     {
         // Create section
         $dfa->addTextState('create')->addTextState('section')->addAcceptState(self::class);

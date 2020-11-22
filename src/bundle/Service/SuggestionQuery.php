@@ -17,14 +17,23 @@ final class SuggestionQuery
     /** @var string[]|null */
     private $types;
 
+    /** @var SuggestionContext */
+    private $context;
+
     public function __construct(
         QueryString $queryString,
         int $limit = self::DEFAULT_LIMIT,
-        ?array $types = null
+        ?array $types = null,
+        ?SuggestionContext $context = null
     ) {
+        if ($context === null) {
+            $context = new SuggestionContext('unknown');
+        }
+
         $this->queryString = $queryString;
         $this->limit = $limit;
         $this->types = $types;
+        $this->context = $context;
     }
 
     public function getQueryString(): QueryString
@@ -40,5 +49,10 @@ final class SuggestionQuery
     public function getTypes(): ?array
     {
         return $this->types;
+    }
+
+    public function getContext(): SuggestionContext
+    {
+        return $this->context;
     }
 }

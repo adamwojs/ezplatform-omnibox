@@ -1,4 +1,4 @@
-((window, document, Routing) => {
+((window, document, Routing, eZ) => {
     const getSuggestionsEndpoint = (query, limit, types) => {
         limit = limit || 5;
         types = types || [];
@@ -6,7 +6,8 @@
         return Routing.generate('ezplatform.omnibox.search', {
             'query': query,
             'limit': limit,
-            'types': types
+            'types': types,
+            'context': eZ.adminUiConfig.suggestionContext
         });
     }
 
@@ -78,4 +79,4 @@
             input.focus();
         }
     })
-})(window, window.document, window.Routing);
+})(window, window.document, window.Routing, window.eZ);

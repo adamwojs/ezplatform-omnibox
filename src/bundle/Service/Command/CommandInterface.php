@@ -7,10 +7,17 @@ namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\DFA;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAPath;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Suggestion;
+use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
 
 interface CommandInterface
 {
-    public function buildDFA(DFA $dfa): void;
+    /**
+     * Builds DFA for command.
+     */
+    public function buildDFA(DFA $dfa, SuggestionContext $context): void;
 
-    public function buildSuggestion(DFAPath $path): Suggestion;
+    /**
+     * Builds suggestion from given DFAPath and context.
+     */
+    public function buildSuggestion(DFAPath $path, SuggestionContext $context): Suggestion;
 }
