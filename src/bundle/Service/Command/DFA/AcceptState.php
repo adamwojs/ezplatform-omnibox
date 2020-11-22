@@ -20,4 +20,17 @@ final class AcceptState extends State
     {
         return $this->label;
     }
+
+    public function equalsTo(State $state): bool
+    {
+        if ($this === $state) {
+            return true;
+        }
+
+        if ($state instanceof AcceptState) {
+            return $this->label === $state->label;
+        }
+
+        return false;
+    }
 }

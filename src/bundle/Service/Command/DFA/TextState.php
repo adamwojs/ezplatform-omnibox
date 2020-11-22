@@ -20,4 +20,17 @@ final class TextState extends State
     {
         return $this->text;
     }
+
+    public function equalsTo(State $state): bool
+    {
+        if ($this === $state) {
+            return true;
+        }
+
+        if ($state instanceof TextState) {
+            return mb_strtolower($this->getText()) === mb_strtolower($state->getText());
+        }
+
+        return false;
+    }
 }

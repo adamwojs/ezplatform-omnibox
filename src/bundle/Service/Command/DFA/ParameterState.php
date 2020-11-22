@@ -29,4 +29,17 @@ final class ParameterState extends State
     {
         return $this->type;
     }
+
+    public function equalsTo(State $state): bool
+    {
+        if ($this === $state) {
+            return true;
+        }
+
+        if ($state instanceof ParameterState) {
+            return $this->type === $state->type && $this->name === $state->name;
+        }
+
+        return false;
+    }
 }

@@ -45,45 +45,35 @@ abstract class State
 
     public function addTextState(string $text): State
     {
-        foreach ($this->getEdges() as $child) {
-            if ($child instanceof TextState && mb_strtolower($child->getText()) === mb_strtolower($text)) {
-                return $child;
-            }
-        }
-
         return $this->addState(new TextState($text));
     }
 
     public function addParameter(string $name, string $type): State
     {
-        foreach ($this->getEdges() as $child) {
-            if ($child instanceof ParameterState &&
-                $child->getName() === $name &&
-                $child->getType() === $type
-            ) {
-                return $child;
-            }
-        }
-
         return $this->addState(new ParameterState($name, $type));
     }
 
     public function addAcceptState(?string $label = null): State
     {
+        return $this->addState(new AcceptState($label));
+    }
+
+    public function equalsTo(State $state): bool
+    {
+        return $this === $state;
+    }
+
+    private function addState(State $state): State
+    {
         foreach ($this->getEdges() as $child) {
-            if ($child instanceof AcceptState) {
+            if ($child->equalsTo($state)) {
                 return $child;
             }
         }
 
-        return $this->addState(new AcceptState($label));
-    }
+        $state->setParent($this);
+        $this->edges[] = $state;
 
-    private function addState(State $node): State
-    {
-        $node->setParent($this);
-        $this->edges[] = $node;
-
-        return $node;
+        return $state;
     }
 }
