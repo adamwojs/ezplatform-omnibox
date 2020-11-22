@@ -11,6 +11,8 @@ use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
 
 interface CommandInterface
 {
+    public function getCommandName(): string;
+
     /**
      * Builds DFA for command.
      */

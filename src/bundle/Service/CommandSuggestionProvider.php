@@ -28,7 +28,7 @@ final class CommandSuggestionProvider implements SuggestionProviderInterface
 
         $this->commands = [];
         foreach ($commands as $command) {
-            $this->commands[get_class($command)] = $command;
+            $this->commands[$command->getCommandName()] = $command;
         }
     }
 

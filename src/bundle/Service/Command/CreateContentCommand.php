@@ -27,6 +27,11 @@ final class CreateContentCommand implements CommandInterface, ContextBasedComman
         $this->configResolver = $configResolver;
     }
 
+    public function getCommandName(): string
+    {
+        return self::class;
+    }
+
     public function buildDFA(DFA $dfa, SuggestionContext $context): void
     {
         // Create content <ContentType>
@@ -34,7 +39,7 @@ final class CreateContentCommand implements CommandInterface, ContextBasedComman
             ->addTextState('create')
             ->addTextState('content')
             ->addParameter('content_type', 'content_type')
-            ->addAcceptState(self::class);
+            ->addAcceptState($this->getCommandName());
     }
 
     public function buildSuggestion(DFAPath $path, SuggestionContext $context): Suggestion

@@ -27,10 +27,15 @@ final class CreateContentTypeCommand implements CommandInterface
         $this->urlGenerator = $urlGenerator;
     }
 
+    public function getCommandName(): string
+    {
+        return self::class;
+    }
+
     public function buildDFA(DFA $dfa, SuggestionContext $context): void
     {
         // Create content type
-        $dfa->addTextState('create')->addTextState('content')->addTextState('type')->addAcceptState(self::class);
+        $dfa->addTextState('create')->addTextState('content')->addTextState('type')->addAcceptState($this->getCommandName());
     }
 
     public function buildSuggestion(DFAPath $path, SuggestionContext $context): Suggestion

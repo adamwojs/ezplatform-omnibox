@@ -46,7 +46,7 @@ abstract class State
     public function addTextState(string $text): State
     {
         foreach ($this->getEdges() as $child) {
-            if ($child instanceof TextState && $child->getText() === $text) {
+            if ($child instanceof TextState && mb_strtolower($child->getText()) === mb_strtolower($text)) {
                 return $child;
             }
         }

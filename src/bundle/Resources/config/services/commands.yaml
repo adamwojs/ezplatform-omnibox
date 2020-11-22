@@ -10,5 +10,51 @@ services:
 
     AdamWojs\EzPlatformOmniboxBundle\Service\Command\:
         resource: '../../../Service/Command/*'
+        exclude: ['../../../Service/Command/{NonArgRouteCommand}.php']
+
+    ezplatform.omnibox.command.create_content_type_group:
+        class: AdamWojs\EzPlatformOmniboxBundle\Service\Command\NonArgRouteCommand
+        arguments:
+            $routeName: 'ezplatform.content_type_group.create'
+            $commandName: 'create_content_type_group'
+            $commandText: 'Create content type group'
+        tags:
+            - { name: ezplatform.omnibox.command }
+
+    ezplatform.omnibox.command.create_language:
+        class: AdamWojs\EzPlatformOmniboxBundle\Service\Command\NonArgRouteCommand
+        arguments:
+            $routeName: 'ezplatform.language.create'
+            $commandName: 'create_language'
+            $commandText: 'Create language'
+        tags:
+            - { name: ezplatform.omnibox.command }
+
+    ezplatform.omnibox.command.create_object_state_group:
+        class: AdamWojs\EzPlatformOmniboxBundle\Service\Command\NonArgRouteCommand
+        arguments:
+            $routeName: 'ezplatform.object_state_group.create'
+            $commandName: 'create_object_state_group'
+            $commandText: 'Create object state group'
+        tags:
+            - { name: ezplatform.omnibox.command }
+
+    ezplatform.omnibox.command.create_role:
+        class: AdamWojs\EzPlatformOmniboxBundle\Service\Command\NonArgRouteCommand
+        arguments:
+            $routeName: 'ezplatform.role.create'
+            $commandName: 'create_role'
+            $commandText: 'Create role'
+        tags:
+            - { name: ezplatform.omnibox.command }
+
+    ezplatform.omnibox.command.create_section:
+        class: AdamWojs\EzPlatformOmniboxBundle\Service\Command\NonArgRouteCommand
+        arguments:
+            $routeName: 'ezplatform.section.create'
+            $commandName: 'create_section'
+            $commandText: 'Create section'
+        tags:
+            - { name: ezplatform.omnibox.command }
 
     AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAVisitorFactory: ~
