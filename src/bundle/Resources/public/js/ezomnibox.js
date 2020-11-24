@@ -63,7 +63,16 @@
                 },
                 templates: {
                     suggestion: (suggestion, answer) => {
-                        return `${suggestion.displayText}`;
+                        return `
+                            <h6 class="mt-0">${suggestion.displayText}</h6>
+                            
+                            <p class="aa-suggestion-meta">
+                                <svg class="ez-icon ez-icon--small ez-icon--base-dark ez-icon-tag">
+                                    <use xlink:href="/bundles/ezplatformadminuiassets/vendors/webalys/streamlineicons/all-icons.svg#tag"></use>
+                                </svg>                                                                                                
+                                Command
+                            </p> 
+                        `;
                     }
                 }
             }

@@ -82,12 +82,12 @@ final class DFAPath implements IteratorAggregate
             }
 
             if ($node instanceof ParameterState) {
-                $pieces[] = $this->getParameter($node->getName())->getLabel();
+                $pieces[] = '"' . $this->getParameter($node->getName())->getLabel() . '"';
                 continue;
             }
         }
 
-        return implode($glue, $pieces);
+        return ucfirst(implode($glue, $pieces));
     }
 
     public function getIterator(): Iterator
