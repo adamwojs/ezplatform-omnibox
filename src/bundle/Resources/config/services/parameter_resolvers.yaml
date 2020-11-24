@@ -19,3 +19,7 @@ services:
     AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ContentTypeGroupParameterResolver:
         tags:
             - { name: 'ezplatform.omnibox.command.parameter_resolver', type: 'content_type_group' }
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\SectionParameterResolver:
+        tags:
+            - { name: 'ezplatform.omnibox.command.parameter_resolver', type: 'section' }
