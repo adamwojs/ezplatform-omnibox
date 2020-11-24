@@ -7,14 +7,14 @@ namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\DFA;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAPath;
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
+use eZ\Publish\API\Repository\Values\ContentType\ContentTypeGroup;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-final class EditContentTypeCommand extends AbstractRouteCommand
+final class EditContentTypeGroupCommand extends AbstractRouteCommand
 {
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
-        parent::__construct($urlGenerator, 'ezplatform.content_type.edit');
+        parent::__construct($urlGenerator, 'ezplatform.content_type_group.update');
     }
 
     public function buildDFA(DFA $dfa, SuggestionContext $context): void
@@ -22,18 +22,18 @@ final class EditContentTypeCommand extends AbstractRouteCommand
         $dfa->addTextState('edit')
             ->addTextState('content')
             ->addTextState('type')
-            ->addParameter('content_type', 'content_type')
+            ->addTextState('group')
+            ->addParameter('content_type_group', 'content_type_group')
             ->addAcceptState($this->getCommandName());
     }
 
     protected function getRouteParameters(DFAPath $path, SuggestionContext $context): array
     {
-        /** @var ContentType $contentType */
-        $contentType = $path->getParameter('content_type')->getValue();
+        /** @var ContentTypeGroup $contentTypeGroup */
+        $contentTypeGroup = $path->getParameter('content_type_group')->getValue();
 
         return [
-            'contentTypeId' => $contentType->id,
-            'contentTypeGroupId' => $contentType->contentTypeGroups[0]->id,
+            'contentTypeGroupId' => $contentTypeGroup->id,
         ];
     }
 }

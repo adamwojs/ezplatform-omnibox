@@ -16,11 +16,6 @@ final class EditSectionCommand extends AbstractRouteCommand
         parent::__construct($urlGenerator, 'ezplatform.section.update');
     }
 
-    public function getCommandName(): string
-    {
-        return self::class;
-    }
-
     public function buildDFA(DFA $dfa, SuggestionContext $context): void
     {
         $dfa->addTextState('edit')

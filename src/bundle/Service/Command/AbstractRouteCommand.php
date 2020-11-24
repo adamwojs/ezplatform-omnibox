@@ -18,6 +18,11 @@ abstract class AbstractRouteCommand implements CommandInterface
     /** @var string */
     private $routeName;
 
+    public function getCommandName(): string
+    {
+        return static::class;
+    }
+
     public function __construct(UrlGeneratorInterface $urlGenerator, string $routeName)
     {
         $this->urlGenerator = $urlGenerator;
