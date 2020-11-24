@@ -23,3 +23,7 @@ services:
     AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\SectionParameterResolver:
         tags:
             - { name: 'ezplatform.omnibox.command.parameter_resolver', type: 'section' }
+
+    AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ObjectStateGroupParameterResolver:
+        tags:
+            - { name: 'ezplatform.omnibox.command.parameter_resolver', type: 'object_state_group' }
