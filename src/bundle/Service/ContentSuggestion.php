@@ -42,10 +42,7 @@ final class ContentSuggestion implements Suggestion
         return [
             'name' => $this->getDisplayText(),
             'actionUrl' => $this->actionUrl,
-            'contentType' => [
-                'name' => $contentType->getName(),
-                'identifier' => $contentType->identifier,
-            ],
+            'contentType' => $contentType->identifier,
             'parentName' => $this->getParentLocationContentName(),
         ];
     }

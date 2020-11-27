@@ -42,14 +42,17 @@
                 },
                 templates: {
                     suggestion: (suggestion, answer) => {
+                        const contentTypeIcon = eZ.helpers.contentType.getContentTypeIconUrl(suggestion.contentType);
+                        const contentTypeName = eZ.helpers.contentType.getContentTypeName(suggestion.contentType);
+
                         return `
                             <h6 class="mt-0">${suggestion.name}</h6>
                             
                             <p class="aa-suggestion-meta">
-                                <svg class="ez-icon ez-icon--small ez-icon--base-dark ez-icon-${suggestion.contentType.identifier}">
-                                    <use xlink:href="/bundles/ezplatformadminuiassets/vendors/webalys/streamlineicons/all-icons.svg#${suggestion.contentType.identifier}"></use>
+                                <svg class="ez-icon ez-icon--small ez-icon--base-dark ez-icon-${suggestion.contentType}">
+                                    <use xlink:href="${contentTypeIcon}"></use>
                                 </svg>                                                                                                
-                                ${suggestion.contentType.name} under ${suggestion.parentName}
+                                ${contentTypeName} under ${suggestion.parentName}
                             </p> 
                         `;
                     }
@@ -63,12 +66,14 @@
                 },
                 templates: {
                     suggestion: (suggestion, answer) => {
+                        const iconPath = eZ.helpers.icon.getIconPath('tag');
+
                         return `
                             <h6 class="mt-0">${suggestion.displayText}</h6>
                             
                             <p class="aa-suggestion-meta">
                                 <svg class="ez-icon ez-icon--small ez-icon--base-dark ez-icon-tag">
-                                    <use xlink:href="/bundles/ezplatformadminuiassets/vendors/webalys/streamlineicons/all-icons.svg#tag"></use>
+                                    <use xlink:href="${iconPath}"></use>
                                 </svg>                                                                                                
                                 Command
                             </p> 
