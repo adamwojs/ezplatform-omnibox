@@ -4,7 +4,12 @@ module.exports = (eZConfig, eZConfigManager) => {
     eZConfigManager.add({
         eZConfig,
         entryName: 'ezplatform-admin-ui-layout-js',
-        newItems: [path.resolve(__dirname, '../public/js/ezomnibox.js')],
+        newItems: [
+            path.resolve(__dirname, '../public/js/ezomnibox-api.js'),
+            path.resolve(__dirname, '../public/js/ezomnibox-content.js'),
+            path.resolve(__dirname, '../public/js/ezomnibox-command.js'),
+            path.resolve(__dirname, '../public/js/ezomnibox-init.js'),
+        ],
     });
 
     eZConfigManager.add({
