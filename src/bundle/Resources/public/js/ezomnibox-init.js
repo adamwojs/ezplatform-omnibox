@@ -21,29 +21,31 @@
         });
     }
 
-    const form = doc.getElementById('omnibox');
-    const input = form.querySelector('input');
-
     doc.addEventListener('DOMContentLoaded', () => {
-        const search = autocomplete(input, {
-            openOnFocus: true,
-            hint: true
-        }, eZ.omnibox.getProviders());
+        const form = doc.getElementById('omnibox');
 
-        search.on('autocomplete:selected', (e, suggestion, dataset) => {
-            if (suggestion && suggestion.actionUrl.length !== 0) {
-                global.location = suggestion.actionUrl;
-            }
-        });
+        if (form !== null) {
+            const input = form.querySelector('input');
+            const search = autocomplete(input, {
+                openOnFocus: true,
+                hint: true
+            }, eZ.omnibox.getProviders());
 
-        attachSpeechRecognizer(input, (event) => {
-            for (let i = event.resultIndex; i < event.results.length; i++) {
-                const result = event.results[i];
-                if (result.isFinal) {
-                    search.autocomplete.setVal(search.autocomplete.getVal() +  ' ' + result[0].transcript);
+            search.on('autocomplete:selected', (e, suggestion, dataset) => {
+                if (suggestion && suggestion.actionUrl.length !== 0) {
+                    global.location = suggestion.actionUrl;
                 }
-            }
-        });
+            });
+
+            attachSpeechRecognizer(input, (event) => {
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const result = event.results[i];
+                    if (result.isFinal) {
+                        search.autocomplete.setVal(search.autocomplete.getVal() +  ' ' + result[0].transcript);
+                    }
+                }
+            });
+        }
     });
 
     doc.addEventListener('keydown', (e) => {
