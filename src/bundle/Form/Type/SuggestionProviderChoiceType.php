@@ -30,7 +30,8 @@ final class SuggestionProviderChoiceType extends AbstractType
             'choices' => $this->getDefaultChoices(),
             'choice_label' => function ($choice, $key, $value): string {
                 return $this->translator->trans(
-                    /** @Ignore */ 'settings.suggestion_providers.value.' . $value,
+                    /** @Ignore */
+                    'settings.suggestion_providers.value.' . $value,
                     [],
                     'user_settings'
                 );

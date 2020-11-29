@@ -41,7 +41,8 @@ final class SuggestionProviders implements ValueDefinitionInterface, FormMapperI
         $labels = [];
         foreach (explode(self::STORAGE_VALUE_DELIMITER, $storageValue) as $value) {
             $labels[] = $this->translator->trans(
-                /** @Ignore */ 'settings.suggestion_providers.value.' . $value,
+                /** @Ignore */
+                'settings.suggestion_providers.value.' . $value,
                 [],
                 'user_settings'
             );
