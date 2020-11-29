@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AdamWojs\EzPlatformOmniboxBundle\UI\Config;
+namespace AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider;
 
 use EzSystems\EzPlatformAdminUi\UI\Config\ProviderInterface;
 

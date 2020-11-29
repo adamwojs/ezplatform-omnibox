@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="0e05218d5c5f4f651505dde25388fcedfb2a9fdb" resname="settings.suggestion_providers.value.description">
+        <source>Enabled suggestion providers</source>
+        <target state="new">Enabled suggestion providers</target>
+        <note>key: settings.suggestion_providers.value.description</note>
+      </trans-unit>
+      <trans-unit id="f84d5dcf97beb8f2ab1ad4707cf940cf9718d0aa" resname="settings.suggestion_providers.value.title">
+        <source>Suggestion providers</source>
+        <target state="new">Suggestion providers</target>
+        <note>key: settings.suggestion_providers.value.title</note>
+      </trans-unit>
+      <trans-unit id="f94dd7420a4168d81e741614b2839cb7" resname="settings.suggestion_providers.value.command">
+        <source>Command</source>
+        <target state="new">Command</target>
+        <note>key: settings.suggestion_providers.value.command</note>
+      </trans-unit>
+      <trans-unit id="90b3619989d16c45edba581eb4749d7c" resname="settings.suggestion_providers.value.content">
+        <source>Content</source>
+        <target state="new">Content</target>
+        <note>key: settings.suggestion_providers.value.content</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

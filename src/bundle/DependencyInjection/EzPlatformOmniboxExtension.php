@@ -27,6 +27,7 @@ final class EzPlatformOmniboxExtension extends Extension implements PrependExten
     public function prepend(ContainerBuilder $container): void
     {
         $this->prependEzDesignConfiguration($container);
+        $this->prependJMSTranslation($container);
     }
 
     private function prependEzDesignConfiguration(ContainerBuilder $container): void
@@ -36,5 +37,22 @@ final class EzPlatformOmniboxExtension extends Extension implements PrependExten
 
         $container->prependExtensionConfig('ezdesign', $config['ezdesign']);
         $container->addResource(new FileResource($eZDesignConfigFile));
+    }
+
+    private function prependJMSTranslation(ContainerBuilder $container): void
+    {
+        $container->prependExtensionConfig('jms_translation', [
+            'configs' => [
+                'ezplatform_omnibox' => [
+                    'dirs' => [
+                        __DIR__ . '/../../',
+                    ],
+                    'output_dir' => __DIR__ . '/../Resources/translations/',
+                    'output_format' => 'xliff',
+                    'excluded_dirs' => ['tests'],
+                    'extractors' => [],
+                ],
+            ],
+        ]);
     }
 }

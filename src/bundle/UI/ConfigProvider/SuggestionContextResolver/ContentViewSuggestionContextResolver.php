@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AdamWojs\EzPlatformOmniboxBundle\UI\Config\SuggestionContextResolver;
+namespace AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider\SuggestionContextResolver;
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
-use AdamWojs\EzPlatformOmniboxBundle\UI\Config\SuggestionContextResolverInterface;
+use AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider\SuggestionContextResolverInterface;
 use eZ\Publish\Core\MVC\Symfony\View\ContentView;
 use Symfony\Component\HttpFoundation\RequestStack;
 

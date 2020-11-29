@@ -4,6 +4,6 @@ services:
         autoconfigure: true
         public: false
 
-    AdamWojs\EzPlatformOmniboxBundle\UI\Config\SuggestionContextResolver\ContentViewSuggestionContextResolver:
+    AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider\SuggestionContextResolver\ContentViewSuggestionContextResolver:
         tags:
             - { name: ezplatform.omnibox.suggestion_context_resolver, priority: 0 }
