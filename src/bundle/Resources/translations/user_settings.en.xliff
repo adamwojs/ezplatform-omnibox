@@ -26,6 +26,26 @@
         <target state="new">Content</target>
         <note>key: settings.suggestion_providers.value.content</note>
       </trans-unit>
+      <trans-unit id="13018783be3ad368850c03778f745300b5e735f0" resname="settings.voice_assistant.value.description">
+        <source>Enable voice assistant</source>
+        <target state="new">Enable voice assistant</target>
+        <note>key: settings.voice_assistant.value.description</note>
+      </trans-unit>
+      <trans-unit id="c44b9c014ba65c0025c9d0d0b3190a33aa046766" resname="settings.voice_assistant.value.disabled">
+        <source>disabled</source>
+        <target state="new">disabled</target>
+        <note>key: settings.voice_assistant.value.disabled</note>
+      </trans-unit>
+      <trans-unit id="b0e673fefab9756977ef47580347dbfc44c9a2ec" resname="settings.voice_assistant.value.enabled">
+        <source>enabled</source>
+        <target state="new">enabled</target>
+        <note>key: settings.voice_assistant.value.enabled</note>
+      </trans-unit>
+      <trans-unit id="44c952a1806931bbf9a78f21ed01a410f0dd1389" resname="settings.voice_assistant.value.title">
+        <source>Voice assistant</source>
+        <target state="new">Voice assistant</target>
+        <note>key: settings.voice_assistant.value.title</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

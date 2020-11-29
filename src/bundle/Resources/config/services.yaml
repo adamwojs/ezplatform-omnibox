@@ -3,6 +3,7 @@ imports:
     - { resource: services/suggestion_context_resolvers.yaml }
     - { resource: services/commands.yaml }
     - { resource: services/parameter_resolvers.yaml }
+    - { resource: services/user_settings.yaml }
 
 services:
     _defaults:
@@ -31,7 +32,3 @@ services:
         tags:
             - { name: ezplatform.admin_ui.config_provider, key: 'suggestionContext' }
 
-    AdamWojs\EzPlatformOmniboxBundle\UI\UserSettings\SuggestionProviders:
-        tags:
-            - { name: ezplatform.admin_ui.user_setting.value, identifier: suggestion_providers }
-            - { name: ezplatform.admin_ui.user_setting.form_mapper, identifier: suggestion_providers }

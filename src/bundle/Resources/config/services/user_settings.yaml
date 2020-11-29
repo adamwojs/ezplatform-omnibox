@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AdamWojs\EzPlatformOmniboxBundle\UI\UserSettings\SuggestionProviders:
+        tags:
+            - { name: ezplatform.admin_ui.user_setting.value, identifier: suggestion_providers }
+            - { name: ezplatform.admin_ui.user_setting.form_mapper, identifier: suggestion_providers }
+
+    AdamWojs\EzPlatformOmniboxBundle\UI\UserSettings\VoiceAssistant:
+        tags:
+            - { name: ezplatform.admin_ui.user_setting.value, identifier: voice_assistant }
+            - { name: ezplatform.admin_ui.user_setting.form_mapper, identifier: voice_assistant }
