@@ -1,5 +1,11 @@
 ((global, doc, eZ) => {
+    const PROVIDER_NAME = 'content';
+
     doc.addEventListener('ezplatform.omnibox.init', (event) => {
+        if (!eZ.omnibox.isProviderEnabled(PROVIDER_NAME)) {
+            return ;
+        }
+
         const provider = {
             name: 'content',
             displayKey: 'name',

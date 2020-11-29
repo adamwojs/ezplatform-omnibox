@@ -37,14 +37,16 @@
                 }
             });
 
-            attachSpeechRecognizer(input, (event) => {
-                for (let i = event.resultIndex; i < event.results.length; i++) {
-                    const result = event.results[i];
-                    if (result.isFinal) {
-                        search.autocomplete.setVal(search.autocomplete.getVal() +  ' ' + result[0].transcript);
+            if (eZ.omnibox.isVoiceAssistantEnabled()) {
+                attachSpeechRecognizer(input, (event) => {
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        const result = event.results[i];
+                        if (result.isFinal) {
+                            search.autocomplete.setVal(search.autocomplete.getVal() +  ' ' + result[0].transcript);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     });
 

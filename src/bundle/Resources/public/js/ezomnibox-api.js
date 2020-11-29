@@ -46,9 +46,25 @@
         return fetch(request).then(handleResponse);
     }
 
+    const isProviderEnabled = (identifier) => {
+        const providers = eZ.adminUiConfig.suggestions.suggestionProviders;
+
+        if (providers.length > 0) {
+            return providers.includes(identifier);
+        }
+
+        return true;
+    }
+
+    const isVoiceAssistantEnabled = () => {
+        return  eZ.adminUiConfig.suggestions.voiceAssistant.enabled;
+    }
+
     eZ.addConfig('omnibox', {
         fetchSuggestions,
         getProviders,
-        getSuggestionsContext
+        getSuggestionsContext,
+        isProviderEnabled,
+        isVoiceAssistantEnabled,
     });
 })(window, window.document, window.Routing, window.eZ);

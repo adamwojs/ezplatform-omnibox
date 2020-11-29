@@ -1,7 +1,13 @@
 ((global, doc, eZ) => {
+    const PROVIDER_NAME = 'command';
+
     doc.addEventListener('ezplatform.omnibox.init', (event) => {
+        if (!eZ.omnibox.isProviderEnabled(PROVIDER_NAME)) {
+            return ;
+        }
+
         const provider = {
-            name: 'command',
+            name: PROVIDER_NAME,
             displayKey: 'displayText',
             source: (query, callback) => {
                 eZ.omnibox.fetchSuggestions(query, null, ['command']).then(callback);

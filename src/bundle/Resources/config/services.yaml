@@ -32,3 +32,6 @@ services:
         tags:
             - { name: ezplatform.admin_ui.config_provider, key: 'suggestionContext' }
 
+    AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider\SuggestionConfigProvider:
+        tags:
+            - { name: ezplatform.admin_ui.config_provider, key: 'suggestions' }
