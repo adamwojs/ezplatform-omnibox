@@ -5,6 +5,8 @@ services:
         public: false
 
     AdamWojs\EzPlatformOmniboxBundle\UI\UserSettings\SuggestionProviders:
+        arguments:
+            $providers: !tagged_iterator { tag: ezplatform.omnibox.suggestion_provider, index_by: type }
         tags:
             - { name: ezplatform.admin_ui.user_setting.value, identifier: suggestion_providers }
             - { name: ezplatform.admin_ui.user_setting.form_mapper, identifier: suggestion_providers }

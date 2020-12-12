@@ -18,12 +18,16 @@ final class SuggestionProviders implements ValueDefinitionInterface, FormMapperI
     /** @var \Symfony\Contracts\Translation\TranslatorInterface */
     private $translator;
 
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionProviderInterface[] */
+    private $providers;
+
     /**
      * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
      */
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, iterable $providers)
     {
         $this->translator = $translator;
+        $this->providers = $providers;
     }
 
     public function getName(): string
@@ -53,7 +57,12 @@ final class SuggestionProviders implements ValueDefinitionInterface, FormMapperI
 
     public function getDefaultValue(): string
     {
-        return '';
+        $identifiers = [];
+        foreach ($this->providers as $identifier => $provider) {
+            $identifiers[] = $identifier;
+        }
+
+        return implode(self::STORAGE_VALUE_DELIMITER, $identifiers);
     }
 
     public function mapFieldForm(FormBuilderInterface $formBuilder, ValueDefinitionInterface $value): FormBuilderInterface
