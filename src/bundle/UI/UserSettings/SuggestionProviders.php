@@ -42,6 +42,14 @@ final class SuggestionProviders implements ValueDefinitionInterface, FormMapperI
 
     public function getDisplayValue(string $storageValue): string
     {
+        if ($storageValue === '') {
+            return $this->translator->trans(
+                'settings.suggestion_providers.value.none',
+                [],
+                'user_settings'
+            );
+        }
+
         $labels = [];
         foreach (explode(self::STORAGE_VALUE_DELIMITER, $storageValue) as $value) {
             $labels[] = $this->translator->trans(

@@ -16,6 +16,11 @@
         <target state="new">Suggestion providers</target>
         <note>key: settings.suggestion_providers.value.title</note>
       </trans-unit>
+      <trans-unit id="4d7ee0ec47b3fe5dd4def6f8af202d31" resname="settings.suggestion_providers.value.none">
+        <source>None</source>
+        <target state="new">None</target>
+        <note>key: settings.suggestion_providers.value.none</note>
+      </trans-unit>
       <trans-unit id="f94dd7420a4168d81e741614b2839cb7" resname="settings.suggestion_providers.value.command">
         <source>Command</source>
         <target state="new">Command</target>
