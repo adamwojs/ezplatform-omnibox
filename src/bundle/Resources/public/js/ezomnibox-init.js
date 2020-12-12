@@ -47,12 +47,12 @@
                     }
                 });
             }
-        }
-    });
 
-    doc.addEventListener('keydown', (e) => {
-        if (e.altKey && e.key === '/') {
-            input.focus();
+            doc.addEventListener('keydown', (e) => {
+                if (e.altKey && e.key === '/') {
+                    input.focus();
+                }
+            });
         }
     });
 })(window, window.document, window.eZ);
