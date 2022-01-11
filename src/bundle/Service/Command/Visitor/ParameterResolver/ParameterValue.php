@@ -1,17 +1,21 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver;
 
-use eZ\Publish\API\Repository\Values\ValueObject;
+use Ibexa\Contracts\Core\Repository\Values\ValueObject;
 
 final class ParameterValue
 {
     /** @var string */
     private $label;
 
-    /** @var ValueObject */
+    /** @var \Ibexa\Contracts\Core\Repository\Values\ValueObject */
     private $value;
 
     public function __construct(string $label, ValueObject $value)

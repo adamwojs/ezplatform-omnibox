@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command;
@@ -7,14 +11,13 @@ namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\DFA;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAPath;
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
-use eZ\Publish\API\Repository\Values\Content\Language;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class EditLanguageCommand extends AbstractRouteCommand
 {
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
-        parent::__construct($urlGenerator, 'ezplatform.language.edit');
+        parent::__construct($urlGenerator, 'ibexa.language.edit');
     }
 
     public function buildDFA(DFA $dfa, SuggestionContext $context): void
@@ -27,7 +30,7 @@ final class EditLanguageCommand extends AbstractRouteCommand
 
     protected function getRouteParameters(DFAPath $path, SuggestionContext $context): array
     {
-        /** @var Language $language */
+        /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Language $language */
         $language = $path->getParameter('language')->getValue();
 
         return [

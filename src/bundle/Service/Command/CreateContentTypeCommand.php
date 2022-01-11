@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command;
@@ -9,12 +13,11 @@ use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAPath;
 use AdamWojs\EzPlatformOmniboxBundle\Service\CommandSuggestion;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Suggestion;
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
-use eZ\Publish\API\Repository\Values\ContentType\ContentTypeGroup;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class CreateContentTypeCommand implements CommandInterface
 {
-    /** @var UrlGeneratorInterface */
+    /** @var \Symfony\Component\Routing\Generator\UrlGeneratorInterface */
     private $urlGenerator;
 
     public function __construct(UrlGeneratorInterface $urlGenerator)
@@ -41,12 +44,12 @@ final class CreateContentTypeCommand implements CommandInterface
 
     public function buildSuggestion(DFAPath $path, SuggestionContext $context): Suggestion
     {
-        /** @var ContentTypeGroup $contentTypeGroup */
+        /** @var \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup $contentTypeGroup */
         $contentTypeGroup = $path->getParameter('content_type_group')->getValue();
 
         return new CommandSuggestion(
             $path->join(),
-            $this->urlGenerator->generate('ezplatform.content_type.add', [
+            $this->urlGenerator->generate('ibexa.content_type.add', [
                 'contentTypeGroupId' => $contentTypeGroup->id,
             ])
         );

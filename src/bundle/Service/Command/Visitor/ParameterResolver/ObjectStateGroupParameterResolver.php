@@ -1,16 +1,19 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver;
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\ParameterState;
-use eZ\Publish\API\Repository\ObjectStateService;
-use eZ\Publish\API\Repository\Values\ObjectState\ObjectStateGroup;
+use Ibexa\Contracts\Core\Repository\ObjectStateService;
 
 final class ObjectStateGroupParameterResolver implements ParameterResolver
 {
-    /** @var ObjectStateGroup */
+    /** @var \Ibexa\Contracts\Core\Repository\Values\ObjectState\ObjectStateGroup */
     private $objectStateService;
 
     public function __construct(ObjectStateService $objectStateService)

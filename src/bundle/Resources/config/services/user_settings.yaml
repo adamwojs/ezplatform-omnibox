@@ -8,10 +8,10 @@ services:
         arguments:
             $providers: !tagged_iterator { tag: ezplatform.omnibox.suggestion_provider, index_by: type }
         tags:
-            - { name: ezplatform.admin_ui.user_setting.value, identifier: suggestion_providers }
-            - { name: ezplatform.admin_ui.user_setting.form_mapper, identifier: suggestion_providers }
+            - { name: ibexa.user.setting.value, identifier: suggestion_providers }
+            - { name: ibexa.user.setting.mapper.form, identifier: suggestion_providers }
 
     AdamWojs\EzPlatformOmniboxBundle\UI\UserSettings\VoiceAssistant:
         tags:
-            - { name: ezplatform.admin_ui.user_setting.value, identifier: voice_assistant }
-            - { name: ezplatform.admin_ui.user_setting.form_mapper, identifier: voice_assistant }
+            - { name: ibexa.user.setting.value, identifier: voice_assistant }
+            - { name: ibexa.user.setting.mapper.form, identifier: voice_assistant }

@@ -1,10 +1,13 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Form\Type;
 
-use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionProviderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,10 +15,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class SuggestionProviderChoiceType extends AbstractType
 {
-    /** @var TranslatorInterface */
+    /** @var \Symfony\Contracts\Translation\TranslatorInterface */
     private $translator;
 
-    /** @var SuggestionProviderInterface[] */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionProviderInterface[] */
     private $providers;
 
     public function __construct(TranslatorInterface $translator, iterable $providers)

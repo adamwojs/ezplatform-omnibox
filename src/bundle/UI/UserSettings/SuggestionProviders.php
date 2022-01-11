@@ -1,13 +1,17 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\UI\UserSettings;
 
 use AdamWojs\EzPlatformOmniboxBundle\Form\Transformer\StringToArrayTransformer;
 use AdamWojs\EzPlatformOmniboxBundle\Form\Type\SuggestionProviderChoiceType;
-use EzSystems\EzPlatformUser\UserSetting\FormMapperInterface;
-use EzSystems\EzPlatformUser\UserSetting\ValueDefinitionInterface;
+use Ibexa\Contracts\User\UserSetting\FormMapperInterface;
+use Ibexa\Contracts\User\UserSetting\ValueDefinitionInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

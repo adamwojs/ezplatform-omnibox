@@ -1,15 +1,19 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver;
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\ParameterState;
-use eZ\Publish\API\Repository\SectionService;
+use Ibexa\Contracts\Core\Repository\SectionService;
 
 final class SectionParameterResolver implements ParameterResolver
 {
-    /** @var \eZ\Publish\API\Repository\SectionService */
+    /** @var \Ibexa\Contracts\Core\Repository\SectionService */
     private $sectionService;
 
     public function __construct(SectionService $sectionService)

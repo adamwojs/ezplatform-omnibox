@@ -1,22 +1,25 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service;
 
-use eZ\Publish\API\Repository\SearchService;
-use eZ\Publish\API\Repository\Values\Content\Content;
-use eZ\Publish\API\Repository\Values\Content\Query;
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
-use eZ\Publish\API\Repository\Values\Content\Query\SortClause;
+use Ibexa\Contracts\Core\Repository\SearchService;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\Criterion;
+use Ibexa\Contracts\Core\Repository\Values\Content\Query\SortClause;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class ContentSuggestionProvider implements SuggestionProviderInterface
 {
-    /** @var SearchService */
+    /** @var \Ibexa\Contracts\Core\Repository\SearchService */
     private $searchService;
 
-    /** @var UrlGeneratorInterface */
+    /** @var \Symfony\Component\Routing\Generator\UrlGeneratorInterface */
     private $urlGenerator;
 
     public function __construct(SearchService $searchService, UrlGeneratorInterface $urlGenerator)
@@ -36,7 +39,7 @@ final class ContentSuggestionProvider implements SuggestionProviderInterface
 
         $searchResults = $this->searchService->findContent($query);
         foreach ($searchResults as $searchResult) {
-            /** @var Content $content */
+            /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Content $content */
             $content = $searchResult->valueObject;
 
             if (!$queryString->isPrefixOf($content->getName())) {
@@ -45,7 +48,7 @@ final class ContentSuggestionProvider implements SuggestionProviderInterface
 
             yield new ContentSuggestion(
                 $content,
-                $this->urlGenerator->generate('_ez_content_view', [
+                $this->urlGenerator->generate('ibexa.content.view', [
                     'contentId' => $content->id,
                 ])
             );

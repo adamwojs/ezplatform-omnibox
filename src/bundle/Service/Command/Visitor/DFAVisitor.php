@@ -1,26 +1,29 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor;
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\AcceptState;
-use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\State;
-use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\ParameterState;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\DFA;
+use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\ParameterState;
+use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\State;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\TextState;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Lexer\LexerInterface;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Lexer\Token;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ParameterResolverRegistry;
-use eZ\Publish\API\Repository\Values\ValueObject;
 use RuntimeException;
 
 final class DFAVisitor implements VisitorInterface
 {
-    /** @var ParameterResolverRegistry */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ParameterResolverRegistry */
     private $parameterResolverRegistry;
 
-    /** @var LexerInterface */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\Lexer\LexerInterface */
     private $lexer;
 
     public function __construct(
@@ -122,7 +125,7 @@ final class DFAVisitor implements VisitorInterface
     }
 
     /**
-     * @return ValueObject[]
+     * @return \Ibexa\Contracts\Core\Repository\Values\ValueObject[]
      */
     private function resolveParameter(ParameterState $node, string $prefix): iterable
     {

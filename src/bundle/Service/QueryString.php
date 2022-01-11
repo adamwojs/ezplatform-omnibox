@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service;
@@ -9,7 +13,7 @@ use function Symfony\Component\String\s;
 
 final class QueryString
 {
-    /** @var AbstractString */
+    /** @var \Symfony\Component\String\AbstractString */
     private $query;
 
     public function __construct(string $query)

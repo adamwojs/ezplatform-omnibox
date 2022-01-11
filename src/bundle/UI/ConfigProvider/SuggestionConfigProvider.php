@@ -1,17 +1,21 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider;
 
 use AdamWojs\EzPlatformOmniboxBundle\UI\UserSettings\VoiceAssistant;
-use eZ\Publish\API\Repository\Exceptions\NotFoundException;
-use eZ\Publish\API\Repository\UserPreferenceService;
-use EzSystems\EzPlatformAdminUi\UI\Config\ProviderInterface;
+use Ibexa\Contracts\AdminUi\UI\Config\ProviderInterface;
+use Ibexa\Contracts\Core\Repository\Exceptions\NotFoundException;
+use Ibexa\Contracts\Core\Repository\UserPreferenceService;
 
 final class SuggestionConfigProvider implements ProviderInterface
 {
-    /** @var \eZ\Publish\API\Repository\UserPreferenceService */
+    /** @var \Ibexa\Contracts\Core\Repository\UserPreferenceService */
     private $userPreferenceService;
 
     public function __construct(UserPreferenceService $userPreferenceService)

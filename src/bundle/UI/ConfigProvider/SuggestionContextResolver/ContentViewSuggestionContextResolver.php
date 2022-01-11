@@ -1,17 +1,21 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider\SuggestionContextResolver;
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
 use AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider\SuggestionContextResolverInterface;
-use eZ\Publish\Core\MVC\Symfony\View\ContentView;
+use Ibexa\Core\MVC\Symfony\View\ContentView;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ContentViewSuggestionContextResolver implements SuggestionContextResolverInterface
 {
-    /** @var RequestStack */
+    /** @var \Symfony\Component\HttpFoundation\RequestStack */
     private $requestStack;
 
     public function __construct(RequestStack $requestStack)

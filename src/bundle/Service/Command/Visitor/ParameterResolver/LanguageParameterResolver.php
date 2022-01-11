@@ -1,15 +1,19 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver;
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\ParameterState;
-use eZ\Publish\API\Repository\LanguageService;
+use Ibexa\Contracts\Core\Repository\LanguageService;
 
 final class LanguageParameterResolver implements ParameterResolver
 {
-    /** @var \eZ\Publish\API\Repository\LanguageService */
+    /** @var \Ibexa\Contracts\Core\Repository\LanguageService */
     private $languageService;
 
     public function __construct(LanguageService $languageService)

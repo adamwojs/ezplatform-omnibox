@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor;
@@ -9,7 +13,7 @@ use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\P
 
 final class DFAVisitorFactory
 {
-    /** @var ParameterResolverRegistry */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ParameterResolverRegistry */
     private $parameterResolverRegistry;
 
     public function __construct(ParameterResolverRegistry $parameterResolverRegistry)

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\DependencyInjection;
@@ -35,7 +39,7 @@ final class EzPlatformOmniboxExtension extends Extension implements PrependExten
         $eZDesignConfigFile = __DIR__ . '/../Resources/config/ezdesign.yaml';
         $config = Yaml::parseFile($eZDesignConfigFile);
 
-        $container->prependExtensionConfig('ezdesign', $config['ezdesign']);
+        $container->prependExtensionConfig('ibexa_design_engine', $config['ibexa_design_engine']);
         $container->addResource(new FileResource($eZDesignConfigFile));
     }
 

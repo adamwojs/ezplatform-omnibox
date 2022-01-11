@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
+ * @license For full copyright and license information view LICENSE file distributed with this source code.
+ */
 declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command;
@@ -13,7 +17,7 @@ final class EditSectionCommand extends AbstractRouteCommand
 {
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
-        parent::__construct($urlGenerator, 'ezplatform.section.update');
+        parent::__construct($urlGenerator, 'ibexa.section.update');
     }
 
     public function buildDFA(DFA $dfa, SuggestionContext $context): void
@@ -26,7 +30,7 @@ final class EditSectionCommand extends AbstractRouteCommand
 
     protected function getRouteParameters(DFAPath $path, SuggestionContext $context): array
     {
-        /** @var \eZ\Publish\API\Repository\Values\Content\Section $section */
+        /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Section $section */
         $section = $path->getParameter('section')->getValue();
 
         return [
