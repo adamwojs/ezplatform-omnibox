@@ -6,15 +6,15 @@
   ],
   "type": "ezplatform-bundle",
   "require": {
-    "php": "^7.3",
+    "php": "^7.4 || ^8.0",
     "ext-json": "*",
-    "ezsystems/ezplatform-kernel": "^1.0",
-    "ezsystems/ezplatform-admin-ui": "^2.0",
-    "symfony/string": "^5.1"
+    "ibexa/core": "^v4.0",
+    "ibexa/admin-ui": "^v4.0",
+    "symfony/string": "^5.4"
   },
   "require-dev": {
-    "phpunit/phpunit": "^8.2",
-    "ezsystems/ezplatform-code-style": "^0.1.0"
+    "phpunit/phpunit": "^9.0",
+    "ibexa/code-style": "^v1.0"
   },
   "autoload": {
     "psr-4": {
@@ -29,8 +29,8 @@
     }
   },
   "scripts": {
-    "fix-cs": "php-cs-fixer fix -v --show-progress=estimating",
-    "check-cs": "php-cs-fixer fix --dry-run -v --show-progress=estimating",
+    "fix-cs": "php-cs-fixer fix -v --show-progress=dots",
+    "check-cs": "php-cs-fixer fix --dry-run -v --show-progress=dots",
     "unit-tests": "phpunit -c phpunit.xml.dist"
   },
   "extra": {

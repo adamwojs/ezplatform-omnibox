@@ -1,4 +1,6 @@
 ((global, doc, eZ) => {
+    const OMNIBOX_INPUT_SELECTOR = '#omnibox input, [data-enable-omnibox]';
+
     const attachSpeechRecognizer = (input, onResult) => {
         const SpeechRecognition = global.SpeechRecognition || global.webkitSpeechRecognition;
 
@@ -22,10 +24,7 @@
     }
 
     doc.addEventListener('DOMContentLoaded', () => {
-        const form = doc.getElementById('omnibox');
-
-        if (form !== null) {
-            const input = form.querySelector('input');
+        doc.querySelectorAll(OMNIBOX_INPUT_SELECTOR).forEach((input) => {
             const search = autocomplete(input, {
                 openOnFocus: true,
                 hint: true
@@ -53,6 +52,6 @@
                     input.focus();
                 }
             });
-        }
+        });
     });
 })(window, window.document, window.eZ);

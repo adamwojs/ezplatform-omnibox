@@ -9,16 +9,16 @@ use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAPath;
 use AdamWojs\EzPlatformOmniboxBundle\Service\CommandSuggestion;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Suggestion;
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
-use eZ\Publish\API\Repository\Values\ContentType\ContentType;
-use eZ\Publish\Core\MVC\ConfigResolverInterface;
+use Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType;
+use Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class CreateContentCommand implements CommandInterface, ContextBasedCommandInterface
 {
-    /** @var UrlGeneratorInterface */
+    /** @var \Symfony\Component\Routing\Generator\UrlGeneratorInterface */
     private $urlGenerator;
 
-    /** @var ConfigResolverInterface */
+    /** @var \Ibexa\Contracts\Core\SiteAccess\ConfigResolverInterface */
     private $configResolver;
 
     public function __construct(UrlGeneratorInterface $urlGenerator, ConfigResolverInterface $configResolver)
@@ -44,13 +44,13 @@ final class CreateContentCommand implements CommandInterface, ContextBasedComman
 
     public function buildSuggestion(DFAPath $path, SuggestionContext $context): Suggestion
     {
-        /** @var ContentType $contentType */
+        /** @var \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentType $contentType */
         $contentType = $path->getParameter('content_type')->getValue();
 
         return new CommandSuggestion(
             $path->join(),
             $this->urlGenerator->generate(
-                'ezplatform.content.create.proxy',
+                'ibexa.content.create.proxy',
                 [
                     'parentLocationId' => $context->get('locationId'),
                     'languageCode' => $this->getDefaultLanguageCode(),

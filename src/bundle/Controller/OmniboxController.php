@@ -8,14 +8,14 @@ use AdamWojs\EzPlatformOmniboxBundle\Service\QueryString;
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionProviderInterface;
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionQuery;
-use EzSystems\EzPlatformRest\Server\Exceptions\BadRequestException;
+use Ibexa\Rest\Server\Exceptions\BadRequestException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 final class OmniboxController extends AbstractController
 {
-    /** @var SuggestionProviderInterface */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionProviderInterface */
     private $suggestionProvider;
 
     public function __construct(SuggestionProviderInterface $omniboxService)

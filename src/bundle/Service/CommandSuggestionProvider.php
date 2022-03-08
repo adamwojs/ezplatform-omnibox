@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service;
 
-use AdamWojs\EzPlatformOmniboxBundle\Service\Command\ContextBasedCommandInterface;
-use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\State;
-use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\DFA;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\CommandInterface;
+use AdamWojs\EzPlatformOmniboxBundle\Service\Command\ContextBasedCommandInterface;
+use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\DFA;
+use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\State;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Lexer\Lexer;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAVisitorFactory;
 
 final class CommandSuggestionProvider implements SuggestionProviderInterface
 {
-    /** @var DFAVisitorFactory */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAVisitorFactory */
     private $dfaVisitorFactory;
 
-    /** @var CommandInterface[] */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\CommandInterface[] */
     private $commands;
 
-    /** @var DFA|null */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\DFA|null */
     private $dfa;
 
     public function __construct(DFAVisitorFactory $dfaVisitorFactory, iterable $commands)
@@ -59,7 +59,7 @@ final class CommandSuggestionProvider implements SuggestionProviderInterface
     }
 
     /**
-     * @param CommandInterface[] $commands
+     * @param \AdamWojs\EzPlatformOmniboxBundle\Service\Command\CommandInterface[] $commands
      */
     private function buildDFA(iterable $commands, SuggestionContext $context): State
     {

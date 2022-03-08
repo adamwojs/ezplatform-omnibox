@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor;
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\AcceptState;
-use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\State;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\ParameterState;
+use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\State;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\TextState;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ParameterValue;
 use ArrayIterator;
@@ -15,13 +15,13 @@ use IteratorAggregate;
 
 final class DFAPath implements IteratorAggregate
 {
-    /** @var State[] */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\State[] */
     private $path;
 
-    /** @var AcceptState */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\AcceptState */
     private $acceptState;
 
-    /** @var ParameterValue[] */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ParameterValue[] */
     private $parameters = [];
 
     public function __construct(AcceptState $state)
@@ -55,7 +55,7 @@ final class DFAPath implements IteratorAggregate
     }
 
     /**
-     * @return ParameterValue[]
+     * @return \AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ParameterValue[]
      */
     public function getParameters(): array
     {

@@ -9,7 +9,7 @@ use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\P
 
 final class DFAVisitorFactory
 {
-    /** @var ParameterResolverRegistry */
+    /** @var \AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver\ParameterResolverRegistry */
     private $parameterResolverRegistry;
 
     public function __construct(ParameterResolverRegistry $parameterResolverRegistry)

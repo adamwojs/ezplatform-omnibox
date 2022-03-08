@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\ParameterResolver;
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\ParameterState;
-use eZ\Publish\API\Repository\ContentTypeService;
+use Ibexa\Contracts\Core\Repository\ContentTypeService;
 
 final class ContentTypeGroupParameterResolver implements ParameterResolver
 {
-    /** @var \eZ\Publish\API\Repository\ContentTypeService */
+    /** @var \Ibexa\Contracts\Core\Repository\ContentTypeService */
     private $contentTypeService;
 
     public function __construct(ContentTypeService $contentTypeService)

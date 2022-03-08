@@ -9,7 +9,7 @@ use function Symfony\Component\String\s;
 
 final class QueryString
 {
-    /** @var AbstractString */
+    /** @var \Symfony\Component\String\AbstractString */
     private $query;
 
     public function __construct(string $query)

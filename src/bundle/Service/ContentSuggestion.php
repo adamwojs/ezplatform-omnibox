@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace AdamWojs\EzPlatformOmniboxBundle\Service;
 
-use eZ\Publish\API\Repository\Values\Content\Content;
+use Ibexa\Contracts\Core\Repository\Values\Content\Content;
 
 final class ContentSuggestion implements Suggestion
 {
-    /** @var \eZ\Publish\API\Repository\Values\Content\Content */
+    /** @var \Ibexa\Contracts\Core\Repository\Values\Content\Content */
     private $content;
 
     /** @var string */

@@ -7,14 +7,13 @@ namespace AdamWojs\EzPlatformOmniboxBundle\Service\Command;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\DFA\DFA;
 use AdamWojs\EzPlatformOmniboxBundle\Service\Command\Visitor\DFAPath;
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
-use eZ\Publish\API\Repository\Values\ContentType\ContentTypeGroup;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class EditContentTypeGroupCommand extends AbstractRouteCommand
 {
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
-        parent::__construct($urlGenerator, 'ezplatform.content_type_group.update');
+        parent::__construct($urlGenerator, 'ibexa.content_type_group.update');
     }
 
     public function buildDFA(DFA $dfa, SuggestionContext $context): void
@@ -29,7 +28,7 @@ final class EditContentTypeGroupCommand extends AbstractRouteCommand
 
     protected function getRouteParameters(DFAPath $path, SuggestionContext $context): array
     {
-        /** @var ContentTypeGroup $contentTypeGroup */
+        /** @var \Ibexa\Contracts\Core\Repository\Values\ContentType\ContentTypeGroup $contentTypeGroup */
         $contentTypeGroup = $path->getParameter('content_type_group')->getValue();
 
         return [

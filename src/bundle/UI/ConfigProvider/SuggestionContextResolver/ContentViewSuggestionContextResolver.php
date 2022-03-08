@@ -6,12 +6,12 @@ namespace AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider\SuggestionContextRe
 
 use AdamWojs\EzPlatformOmniboxBundle\Service\SuggestionContext;
 use AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider\SuggestionContextResolverInterface;
-use eZ\Publish\Core\MVC\Symfony\View\ContentView;
+use Ibexa\Core\MVC\Symfony\View\ContentView;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 final class ContentViewSuggestionContextResolver implements SuggestionContextResolverInterface
 {
-    /** @var RequestStack */
+    /** @var \Symfony\Component\HttpFoundation\RequestStack */
     private $requestStack;
 
     public function __construct(RequestStack $requestStack)
