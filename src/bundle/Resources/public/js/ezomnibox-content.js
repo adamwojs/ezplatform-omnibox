@@ -21,7 +21,7 @@
                             <h6 class="mt-0">${suggestion.name}</h6>
                             
                             <p class="aa-suggestion-meta">
-                                <svg class="ez-icon ez-icon--small ez-icon--base-dark ez-icon-${suggestion.contentType}">
+                                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--base-dark ibexa-icon-${suggestion.contentType}">
                                     <use xlink:href="${contentTypeIcon}"></use>
                                 </svg>                                                                                                
                                 ${contentTypeName} under ${suggestion.parentName}

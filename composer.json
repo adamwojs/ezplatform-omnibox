@@ -29,8 +29,8 @@
     }
   },
   "scripts": {
-    "fix-cs": "php-cs-fixer fix -v --show-progress=estimating",
-    "check-cs": "php-cs-fixer fix --dry-run -v --show-progress=estimating",
+    "fix-cs": "php-cs-fixer fix -v --show-progress=dots",
+    "check-cs": "php-cs-fixer fix --dry-run -v --show-progress=dots",
     "unit-tests": "phpunit -c phpunit.xml.dist"
   },
   "extra": {

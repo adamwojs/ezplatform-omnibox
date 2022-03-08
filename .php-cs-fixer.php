@@ -1,6 +1,6 @@
 <?php
 
-return Ibexa\CodeStyle\PhpCsFixer\InternalConfigFactory::build()
+return (new Ibexa\CodeStyle\PhpCsFixer\Config())
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->in(__DIR__ . '/src')

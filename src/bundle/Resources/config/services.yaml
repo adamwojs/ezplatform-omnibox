@@ -35,3 +35,7 @@ services:
     AdamWojs\EzPlatformOmniboxBundle\UI\ConfigProvider\SuggestionConfigProvider:
         tags:
             - { name: ibexa.admin_ui.config.provider, key: 'suggestions' }
+
+    AdamWojs\EzPlatformOmniboxBundle\Form\Extension\GlobalSearchExtension:
+        tags:
+            - { name: form.type_extension }
