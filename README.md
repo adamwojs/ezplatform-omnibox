@@ -50,15 +50,3 @@ ezplatform_omnibox:
     defaults:
         siteaccess_group_whitelist: '%admin_group_name%'
 ```
-
-### Step 4: Switch `admin` to `omnibox` design
-
-`ezplatform-omnibox` overwrites `top_navigation.html.twig` template, 
-so you have to switch design from `admin` to `omnibox`. 
-
-```yaml
-ezplatform:
-    system:
-        admin:
-            design: omnibox
-```
