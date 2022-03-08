@@ -20,7 +20,7 @@
                             <h6 class="mt-0">${suggestion.displayText}</h6>
                             
                             <p class="aa-suggestion-meta">
-                                <svg class="ez-icon ez-icon--small ez-icon--base-dark ez-icon-tag">
+                                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--base-dark">
                                     <use xlink:href="${iconPath}"></use>
                                 </svg>                                                                                                
                                 Command
